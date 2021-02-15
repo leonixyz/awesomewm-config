@@ -228,7 +228,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mynetwork(),
-            mynetworkinterfacewidget {type = "wlan", name = "wlp4s0", ipv6 = false },
+            mynetworkinterfacewidget {type = "wlan", name = "wlp0s20f0u6", ipv6 = false },
             myendianvpn,
             mycpuwidget,
             mymemorywidget,

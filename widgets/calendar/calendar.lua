@@ -65,7 +65,7 @@ w:setup {
 calendar_widget:buttons(
     awful.util.table.join(
         awful.button({}, 1, function()
-            awful.placement.top_right(w, { margins = {top = 27, right = 0}})
+            awful.placement.top_right(w, { margins = {top = 25, right = 0}})
             w.visible = not w.visible
         end)
     )

@@ -44,13 +44,13 @@ local temperature_humidity_widget = wibox.widget {
 }
 
 local function update_widget(widget, stdout)
-    local temperature = stdout:match("\"temperature\": ?([0-9]+)")
-    local humidity = stdout:match("\"humidity\": ?([0-9]+)")
+    local temperature = stdout:match("\"temperature\": ?([0-9]+)") or '?? '
+    local humidity = stdout:match("\"humidity\": ?([0-9]+)") or '?? '
     temperature_humidity_widget.temperature:set_text(temperature .. '°C')
     temperature_humidity_widget.humidity:set_text(humidity .. '%')
 end
 
-watch([[curl http://192.168.0.147]],
+watch([[curl https://www.leonixyz.net/sensor.json]],
         60, update_widget, temperature_humidity_widget)
 
 return temperature_humidity_widget
