@@ -97,7 +97,16 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                     {
                                         "connect headset",
                                         function()
-                                            os.execute('echo -e "power on\\nconnect 18:11:16:31:14:74\\n" | bluetoothctl')
+                                            awful.spawn.easy_async_with_shell('echo connect 18:11:16:31:14:74 | bluetoothctl | grep Attempting',
+                                                function(stdout, _, _, _)
+                                                    notification = naughty.notify{
+                                                        text =  stdout,
+                                                        title = "Bluetooth headset",
+                                                        timeout = 5, hover_timeout = 0.5,
+                                                        width = 200,
+                                                    }
+                                                end
+                                            )
                                         end,
                                         theme.noteicon
                                     }
@@ -228,7 +237,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mynetwork(),
-            mynetworkinterfacewidget {type = "wlan", name = "wlp0s20f0u6", ipv6 = false },
+            mynetworkinterfacewidget {type = "wlan", name = "wlp4s0", ipv6 = false },
             myendianvpn,
             mycpuwidget,
             mymemorywidget,

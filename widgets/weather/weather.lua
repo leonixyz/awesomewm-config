@@ -71,6 +71,7 @@ watch(string.format([[curl %s -H "accept: application/json"]], API_URL), 3600,
         -- further days forecast
         for k, v in pairs(response.Forecast) do table.insert(days, v) end
         -- refine data
+        data = {}
         for k, v in pairs(days) do
             local code = v.WeatherCode and v.WeatherCode or v.Weathercode
             local desc = v.WeatherDesc and v.WeatherDesc or v.Weatherdesc

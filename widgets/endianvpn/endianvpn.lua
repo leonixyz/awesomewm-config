@@ -33,7 +33,7 @@ local endianvpn_widget = wibox.widget {
     layout = wibox.container.margin(_, 0, 0, 3)
 }
 
-watch('endianvpnctl status', 5,
+watch('endianvpnctl status', 10,
     function(widget, stdout, stderr, exitreason, exitcode)
         if stdout == 'active\n' then
             widget.active = true
