@@ -95,20 +95,52 @@ myawesomemenu = {
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "open terminal", terminal, theme.shellicon },
                                     {
-                                        "connect headset",
+                                        "connect bluetooth speaker",
                                         function()
-                                            awful.spawn.easy_async_with_shell('echo connect 18:11:16:31:14:74 | bluetoothctl | grep Attempting',
+                                            awful.spawn.easy_async_with_shell('echo connect 25:3E:A5:6C:4A:7C | bluetoothctl | grep Attempting',
                                                 function(stdout, _, _, _)
                                                     notification = naughty.notify{
                                                         text =  stdout,
-                                                        title = "Bluetooth headset",
+                                                        title = "Bluetooth speaker",
                                                         timeout = 5, hover_timeout = 0.5,
                                                         width = 200,
                                                     }
                                                 end
                                             )
                                         end,
-                                        theme.noteicon
+                                        theme.volicon
+                                    },
+                                    {
+                                        "connect sony bluetooth headset",
+                                        function()
+                                            awful.spawn.easy_async_with_shell('echo connect 90:7A:58:3B:7F:F6 | bluetoothctl | grep Attempting',
+                                                function(stdout, _, _, _)
+                                                    notification = naughty.notify{
+                                                        text =  stdout,
+                                                        title = "Sony bluetooth headset",
+                                                        timeout = 5, hover_timeout = 0.5,
+                                                        width = 200,
+                                                    }
+                                                end
+                                            )
+                                        end,
+                                        theme.volicon
+                                    },
+                                    {
+                                        "connect bluedio bluetooth headset",
+                                        function()
+                                            awful.spawn.easy_async_with_shell('echo connect 18:11:16:31:14:74 | bluetoothctl | grep Attempting',
+                                                function(stdout, _, _, _)
+                                                    notification = naughty.notify{
+                                                        text =  stdout,
+                                                        title = "Bluedio bluetooth headset",
+                                                        timeout = 5, hover_timeout = 0.5,
+                                                        width = 200,
+                                                    }
+                                                end
+                                            )
+                                        end,
+                                        theme.volicon
                                     }
                                   }
                         })
